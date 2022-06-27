@@ -1,0 +1,19 @@
+ 
+ public:
+    int longestUniqueSubsttr(string S){
+        
+        vector<int> vec(26,0);
+        int res=0;
+        int l=0,r=0,n=S.length();
+        while(r<n)
+        {
+            int c=S[r]-'a';
+            vec[c]++;
+            while(vec[c]>1)//release when count becomes greater than 1
+                vec[S[l++]-'a']--;
+            res=max(r-l+1,res);
+            r++;
+        }
+        return res;
+      
+    }
